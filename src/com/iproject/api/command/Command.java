@@ -26,4 +26,21 @@ package com.iproject.api.command;
 
 public abstract class Command {
 
+	private String label;
+	private String permission;
+	
+	public Command(String label ,String perm) {
+		this.label = label;
+		this.permission = perm;
+	}
+	
+	public String getLabel() {
+		return label;
+	}
+	
+	public String getPerm() {
+		return permission;
+	}
+	
+	public abstract void execute(CommandSender sender, String[] args);
 }

@@ -1,8 +1,7 @@
-package com.iproject.api.entity.player;
-
-import com.iproject.api.command.CommandSender;
-import com.iproject.api.entity.Entity;
-import com.iproject.api.entity.LivingEntity;
+/**
+ * 
+ */
+package com.iproject.server.block;
 
 /**
  * The MIT License (MIT)
@@ -27,7 +26,6 @@ import com.iproject.api.entity.LivingEntity;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-public interface Player extends LivingEntity, Entity, CommandSender {
+public class IBlock {
 
 }

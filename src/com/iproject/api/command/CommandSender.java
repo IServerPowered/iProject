@@ -1,8 +1,7 @@
-package com.iproject.api.entity.player;
-
-import com.iproject.api.command.CommandSender;
-import com.iproject.api.entity.Entity;
-import com.iproject.api.entity.LivingEntity;
+/**
+ * 
+ */
+package com.iproject.api.command;
 
 /**
  * The MIT License (MIT)
@@ -27,7 +26,23 @@ import com.iproject.api.entity.LivingEntity;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public interface CommandSender {
 
-public interface Player extends LivingEntity, Entity, CommandSender {
-
+	/**
+	 * Send a message to the sender
+	 * @send a <strong>message</strong> to the sender
+	 * */
+	public void sendMessage(String message);
+	
+	/**
+	 * Send a message to the sender
+	 * @send a <strong>message</strong> to the sender
+	 * */
+	public void sendMessage(String[] message);
+	
+	/**
+	 * Returns the name of the command sender
+	 * @return the name of the command sender
+	 * */
+	public String getName();
 }

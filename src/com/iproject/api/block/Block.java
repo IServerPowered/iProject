@@ -1,5 +1,7 @@
 package com.iproject.api.block;
 
+import com.iproject.api.util.Location;
+
 /**
  * The MIT License (MIT)
  * 
@@ -26,4 +28,15 @@ package com.iproject.api.block;
 
 public interface Block {
 
+	public String getName();
+	
+	public int getID();
+	
+	public Location getLocation();
+	
+	public boolean isBurnable();
+	
+	public boolean isLiquid();
+	
+	public boolean isBreakable();
 }
