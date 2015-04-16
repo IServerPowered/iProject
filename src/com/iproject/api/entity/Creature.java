@@ -24,6 +24,6 @@ package com.iproject.api.entity;
  * SOFTWARE.
  */
 
-public interface Creature {
+public interface Creature extends LivingEntity {
 
 }

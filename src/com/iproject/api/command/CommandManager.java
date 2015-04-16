@@ -1,7 +1,13 @@
-package com.iproject.api.entity;
+/**
+ * 
+ */
+package com.iproject.api.command;
 
-import com.iproject.api.util.Location;
-import com.iproject.api.util.Vector;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * The MIT License (MIT)
@@ -26,22 +32,27 @@ import com.iproject.api.util.Vector;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public class CommandManager {
 
-public interface Entity {
-
-	public boolean isDead();
+	private HashMap<String, Command> by_label = Maps.newHashMap();
 	
-	public Location getLocation();
+	public void handleCommand(CommandSender sender, String label) {
+		String[] args = label.split(" ");
+		
+		ArrayList<String> argsList = Lists.newArrayList(args);
+		
+		String realLabel = argsList.get(0);
+		
+		argsList.remove(0);
+		
+		String[] realArgs = argsList.toArray(new String[argsList.size()]);
+		
+		Command target = by_label.get(realLabel);
+		
+		target.execute(sender, realArgs);
+	}
 	
-	public Vector getVelocity();
-	
-	public void teleport(Location location);
-	
-	public void setVelocity(Vector vector);
-	
-	public String getName();
-	
-	public String getCustomName();
-	
-	public void setCustomName(String custom);
+	public void registerCommand(Command command) {
+		by_label.put(command.getLabel(), command);
+	}
 }

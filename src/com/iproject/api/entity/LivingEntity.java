@@ -26,4 +26,13 @@ package com.iproject.api.entity;
 
 public interface LivingEntity {
 
+	public float getHealth();
+	
+	public void setHealth(float health);
+	
+	public double getSpeed();
+	
+	public void setSpeed(double speed);
+	
+	public boolean isDead();
 }

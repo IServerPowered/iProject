@@ -1,7 +1,11 @@
-package com.iproject.api.entity;
+/**
+ * 
+ */
+package com.iproject.api;
 
-import com.iproject.api.util.Location;
-import com.iproject.api.util.Vector;
+import java.util.Map;
+
+import com.google.common.collect.Maps;
 
 /**
  * The MIT License (MIT)
@@ -26,22 +30,32 @@ import com.iproject.api.util.Vector;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public enum WeatherType {
 
-public interface Entity {
-
-	public boolean isDead();
+	CLEAR(0),
+	RAIN(1),
+	THUNDER(2),
+	SNOW(3);
 	
-	public Location getLocation();
+	private byte data;
 	
-	public Vector getVelocity();
+	private static final Map<Byte, WeatherType> BY_DATA = Maps.newHashMap();
 	
-	public void teleport(Location location);
+	private WeatherType(int data) {
+		this.data = (byte) data;
+	}
 	
-	public void setVelocity(Vector vector);
+	public static WeatherType getByData(int data) {
+		return (WeatherType) BY_DATA.get(data);
+	}
 	
-	public String getName();
+	public byte getData() {
+		return data;
+	}
 	
-	public String getCustomName();
-	
-	public void setCustomName(String custom);
+	static {
+		for(WeatherType type : values()) {
+			BY_DATA.put(type.getData(), type);
+		}
+	}
 }

@@ -1,5 +1,7 @@
 package com.iproject.api.entity.player;
 
+import java.net.InetSocketAddress;
+
 import com.iproject.api.command.CommandSender;
 import com.iproject.api.entity.Entity;
 import com.iproject.api.entity.LivingEntity;
@@ -30,4 +32,17 @@ import com.iproject.api.entity.LivingEntity;
 
 public interface Player extends LivingEntity, Entity, CommandSender {
 
+	public InetSocketAddress getAdress();
+	
+	public void chat(String message);
+
+	public float getMaxHealth();
+	
+	public void setMaxHealth(float maxH);
+	
+	public double getMaxSpeed();
+	
+	public void setMaxSpeed(double maxS);
+	
+	public boolean isCouching();
 }

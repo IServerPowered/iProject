@@ -39,4 +39,6 @@ public interface Block {
 	public boolean isLiquid();
 	
 	public boolean isBreakable();
+	
+	public boolean isEmpty();
 }

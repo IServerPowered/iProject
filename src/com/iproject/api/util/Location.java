@@ -1,5 +1,7 @@
 package com.iproject.api.util;
 
+import com.iproject.api.World;
+
 /**
  * The MIT License (MIT)
  * 
@@ -26,4 +28,55 @@ package com.iproject.api.util;
 
 public class Location {
 
+	private double x, y, z;
+	private float yaw, pitch;
+	
+	private World world;
+
+	public Location(double x, double y, double z) {
+		this(x, y, z, 0.0f, 0.0f);
+	}
+
+	public Location(double x, double y, double z, float yaw, float pitch) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.yaw = yaw;
+		this.pitch = pitch;
+	}
+
+	/**
+	 * @return the x
+	 */
+	public double getX() {
+		return x;
+	}
+
+	/**
+	 * @return the y
+	 */
+	public double getY() {
+		return y;
+	}
+
+	/**
+	 * @return the z
+	 */
+	public double getZ() {
+		return z;
+	}
+
+	/**
+	 * @return the yaw
+	 */
+	public float getYaw() {
+		return yaw;
+	}
+
+	/**
+	 * @return the pitch
+	 */
+	public float getPitch() {
+		return pitch;
+	}
 }

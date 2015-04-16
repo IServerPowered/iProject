@@ -1,7 +1,12 @@
-package com.iproject.api.entity;
+/**
+ * 
+ */
+package com.iproject.api;
 
+import java.util.Collection;
+
+import com.iproject.api.entity.Entity;
 import com.iproject.api.util.Location;
-import com.iproject.api.util.Vector;
 
 /**
  * The MIT License (MIT)
@@ -26,22 +31,19 @@ import com.iproject.api.util.Vector;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public interface World {
 
-public interface Entity {
-
-	public boolean isDead();
+	public String getWorldName();
 	
-	public Location getLocation();
+	public long getSeed();
 	
-	public Vector getVelocity();
+	public Collection<Entity> getEntities();
 	
-	public void teleport(Location location);
+	public Location getSpawnLocation();
 	
-	public void setVelocity(Vector vector);
+	public boolean isThundering();
 	
-	public String getName();
+	public boolean isRaining();
 	
-	public String getCustomName();
-	
-	public void setCustomName(String custom);
+	public boolean isSnowy();
 }

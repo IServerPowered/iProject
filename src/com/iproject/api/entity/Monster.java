@@ -24,6 +24,9 @@ package com.iproject.api.entity;
  * SOFTWARE.
  */
 
-public interface Monster {
+public interface Monster extends Creature {
 
+	public LivingEntity getTarget();
+	
+	public void setTarget(LivingEntity target);
 }
