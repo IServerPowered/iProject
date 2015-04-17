@@ -1,5 +1,9 @@
 package com.iproject.server;
 
+import java.util.logging.Logger;
+
+import com.iproject.api.Server;
+
 /**
  * The MIT License (MIT)
  * 
@@ -24,9 +28,46 @@ package com.iproject.server;
  * SOFTWARE.
  */
 
-public class MinecraftServer {
+public class MinecraftServer implements Server {
 
+	private String version;
+	private String name;
+	
+	private Logger logger = Logger.getLogger("MinecraftServer");
+	
 	public static void main(String[] args) {
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getLogger()
+	 */
+	@Override
+	public Logger getLogger() {
+		return logger;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getName()
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getVersion()
+	 */
+	@Override
+	public String getVersion() {
+		return version;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getSubClass()
+	 */
+	@Override
+	public MinecraftServer getSubClass() {
+		return this;
 	}
 }

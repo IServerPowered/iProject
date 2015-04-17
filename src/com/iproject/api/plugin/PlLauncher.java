@@ -26,4 +26,9 @@ package com.iproject.api.plugin;
 
 public @interface PlLauncher {
 
+	public String name() default "MyPlugin";
+	
+	public String version() default "1.0";
+	
+	public String[] authors() default "";
 }

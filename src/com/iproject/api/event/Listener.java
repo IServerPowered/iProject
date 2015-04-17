@@ -1,8 +1,7 @@
-package com.iproject.api.plugin;
-
-import java.util.List;
-
-import com.iproject.api.Server;
+/**
+ * 
+ */
+package com.iproject.api.event;
 
 /**
  * The MIT License (MIT)
@@ -27,18 +26,6 @@ import com.iproject.api.Server;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public interface Listener {
 
-public interface Plugin {
-
-	public String getMain();
-	
-	public String getName();
-	
-	public List<String> getAuthors();
-	
-	public PluginManager getPluginManager();
-	
-	public Server getServer();
-	
-	PlLauncher getLauncher();
 }

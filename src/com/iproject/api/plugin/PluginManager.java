@@ -1,5 +1,10 @@
 package com.iproject.api.plugin;
 
+import java.io.File;
+
+import com.iproject.api.event.Event;
+import com.iproject.api.event.Listener;
+
 /**
  * The MIT License (MIT)
  * 
@@ -26,4 +31,9 @@ package com.iproject.api.plugin;
 
 public interface PluginManager {
 
+	public void callEvent(Event event);
+	
+	public void registerEvents(Listener listener);
+	
+	public Plugin[] loadPlugins(File directory);
 }
