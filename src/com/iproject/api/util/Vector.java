@@ -29,4 +29,88 @@ package com.iproject.api.util;
 
 public class Vector {
 
+	private double x, y, z;
+
+	public Vector(double x, double y, double z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	public Vector(Vector other) {
+		this.x = other.x;
+		this.y = other.y;
+		this.z = other.z;
+	}
+
+	public Vector copy(Vector other) {
+		return new Vector(other);
+	}
+
+	public Vector divide(Vector other) {
+		this.x /= other.x;
+		this.y /= other.y;
+		this.z /= other.z;
+		return this;
+	}
+
+	public Vector multiply(Vector other) {
+		this.x *= other.x;
+		this.y *= other.y;
+		this.z *= other.z;
+		return this;
+	}
+
+	public Vector substract(Vector other) {
+		this.x -= other.x;
+		this.y -= other.y;
+		this.z -= other.z;
+		return this;
+	}
+
+	public Vector add(Vector other) {
+		this.x += other.x;
+		this.y += other.y;
+		this.z += other.z;
+		return this;
+	}
+	
+	public Vector sqrt(Vector other) {
+		this.x = Math.sqrt(other.x);
+		this.y = Math.sqrt(other.y);
+		this.z = Math.sqrt(other.z);
+		return this;
+	}
+	
+	public Vector cos(Vector other) {
+		this.x = Math.cos(other.x);
+		this.y = Math.cos(other.y);
+		this.z = Math.cos(other.z);
+		return this;
+	}
+
+	/**
+	 * @return the x
+	 */
+	public double getX() {
+		return x;
+	}
+
+	/**
+	 * @return the y
+	 */
+	public double getY() {
+		return y;
+	}
+
+	/**
+	 * @return the z
+	 */
+	public double getZ() {
+		return z;
+	}
+	
+	public String toString() {
+		return "Vector { x=" + String.valueOf(getX()) + " y=" + String.valueOf(getY()) + " z=" + String.valueOf(getZ()) + " } ";
+	}
 }

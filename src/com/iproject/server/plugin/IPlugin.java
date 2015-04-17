@@ -3,6 +3,14 @@
  */
 package com.iproject.server.plugin;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import com.iproject.api.Server;
+import com.iproject.api.plugin.PlLauncher;
+import com.iproject.api.plugin.Plugin;
+import com.iproject.api.plugin.PluginManager;
+
 /**
  * The MIT License (MIT)
  * 
@@ -26,6 +34,49 @@ package com.iproject.server.plugin;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class IPlugin {
+public class IPlugin implements Plugin {
 
+	private String name;
+	private List<String> authors;
+	
+	private List<Plugin> pluginsLoaded = Lists.newArrayList();
+	
+	public IPlugin() {
+		pluginsLoaded.add(this);
+	}
+	
+	@Override
+	public String getMain() {
+		return this.getClass().getName();
+	}
+
+	@Override
+	public String getName() {
+		return name = getLauncher().name() != null ? name : " ";
+	}
+
+	@Override
+	public List<String> getAuthors() {
+		return authors = Lists.newArrayList(getLauncher().authors()) != null ? authors : null;
+	}
+
+	@Override
+	public PluginManager getPluginManager() {
+		return null;
+	}
+
+	@Override
+	public Server getServer() {
+		return null;
+	}
+
+	@Override
+	public PlLauncher getLauncher() {
+		for(PlLauncher pl;;) {
+			for(Plugin plugin : pluginsLoaded) {
+				pl = plugin.getClass().getAnnotation(PlLauncher.class);
+				return pl;
+			}
+		} 
+	}
 }

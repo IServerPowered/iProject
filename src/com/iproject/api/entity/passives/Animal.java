@@ -1,5 +1,7 @@
 package com.iproject.api.entity.passives;
 
+import com.iproject.api.entity.LivingEntity;
+
 /**
  * The MIT License (MIT)
  * 
@@ -24,6 +26,5 @@ package com.iproject.api.entity.passives;
  * SOFTWARE.
  */
 
-public interface Animal {
-
+public interface Animal extends LivingEntity {
 }

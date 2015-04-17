@@ -1,5 +1,8 @@
 package com.iproject.api.entity.player;
 
+import com.iproject.api.entity.Entity;
+import com.iproject.api.entity.LivingEntity;
+
 /**
  * The MIT License (MIT)
  * 
@@ -24,6 +27,6 @@ package com.iproject.api.entity.player;
  * SOFTWARE.
  */
 
-public interface Human {
+public interface Human extends Entity, LivingEntity {
 
 }

@@ -30,7 +30,7 @@ import com.iproject.api.entity.LivingEntity;
  * SOFTWARE.
  */
 
-public interface Player extends LivingEntity, Entity, CommandSender {
+public interface Player extends LivingEntity, Human, Entity, CommandSender {
 
 	public InetSocketAddress getAdress();
 	
@@ -45,4 +45,6 @@ public interface Player extends LivingEntity, Entity, CommandSender {
 	public void setMaxSpeed(double maxS);
 	
 	public boolean isCouching();
+	
+	public boolean isHuman();
 }

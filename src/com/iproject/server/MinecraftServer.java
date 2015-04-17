@@ -36,7 +36,6 @@ public class MinecraftServer implements Server {
 	private Logger logger = Logger.getLogger("MinecraftServer");
 	
 	public static void main(String[] args) {
-		
 	}
 
 	/* (non-Javadoc)
