@@ -1,16 +1,13 @@
 /**
  * 
  */
-package com.iproject.server.plugin;
+package com.iproject.api;
 
-import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
-import com.google.common.collect.Lists;
-import com.iproject.IProject;
-import com.iproject.api.Server;
-import com.iproject.api.plugin.PlLauncher;
-import com.iproject.api.plugin.Plugin;
-import com.iproject.api.plugin.PluginManager;
+import com.google.common.collect.Maps;
+import com.iproject.api.util.ChunkVector;
 
 /**
  * The MIT License (MIT)
@@ -35,49 +32,31 @@ import com.iproject.api.plugin.PluginManager;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class IPlugin implements Plugin {
+public class ChunkManager {
 
-	private String name;
-	private List<String> authors;
+	private Map<ChunkVector, Chunk> chunks = Maps.newHashMap();
 	
-	private List<Plugin> pluginsLoaded = Lists.newArrayList();
+	private Server server;
 	
-	public IPlugin() {
-		pluginsLoaded.add(this);
+	public ChunkManager(Server server) {
+		this.server = server;
+		
+		server.getLogger().log(Level.ALL, "Invoke ChunkManager class.");
 	}
 	
-	@Override
-	public String getMain() {
-		return this.getClass().getName();
+	public void addChunk(Chunk chunk, double x, double z) {
+		chunks.put(new ChunkVector(x, z), chunk);
 	}
-
-	@Override
-	public String getName() {
-		return name = getLauncher().name() != null ? name : " ";
+	
+	public void removeChunk(Chunk chunk) {
+		if(chunks.containsValue(chunk)) chunks.remove(chunk);
 	}
-
-	@Override
-	public List<String> getAuthors() {
-		return authors = Lists.newArrayList(getLauncher().authors()) != null ? authors : null;
+	
+	public Chunk getChunk(double x, double z) {
+		return (Chunk) chunks.get(new ChunkVector(x, z));
 	}
-
-	@Override
-	public PluginManager getPluginManager() {
-		return null;
-	}
-
-	@Override
+	
 	public Server getServer() {
-		return IProject.getServer();
-	}
-
-	@Override
-	public PlLauncher getLauncher() {
-		for(PlLauncher pl;;) {
-			for(Plugin plugin : pluginsLoaded) {
-				pl = plugin.getClass().getAnnotation(PlLauncher.class);
-				return pl;
-			}
-		} 
+		return server;
 	}
 }

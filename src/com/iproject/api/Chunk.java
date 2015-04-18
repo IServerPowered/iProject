@@ -1,4 +1,10 @@
-package com.iproject.api.scheduler;
+/**
+ * 
+ */
+package com.iproject.api;
+
+import com.iproject.api.block.Block;
+import com.iproject.api.entity.Entity;
 
 /**
  * The MIT License (MIT)
@@ -23,10 +29,34 @@ package com.iproject.api.scheduler;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public interface Chunk {
 
-public interface Scheduler {
-	
-	public void run();
-	
-	public void cancelTask();
+	public abstract int getX();
+
+	public abstract int getZ();
+
+	public abstract World getWorld();
+
+	public abstract Block getBlock(int paramInt1, int paramInt2, int paramInt3);
+
+	public abstract ChunkSnapshot getChunkSnapshot();
+
+	public abstract ChunkSnapshot getChunkSnapshot(boolean paramBoolean1,
+			boolean paramBoolean2, boolean paramBoolean3);
+
+	public abstract Entity[] getEntities();
+
+	// TODO: public abstract BlockState[] getTileEntities();
+
+	public abstract boolean isLoaded();
+
+	public abstract boolean load(boolean paramBoolean);
+
+	public abstract boolean load();
+
+	public abstract boolean unload(boolean paramBoolean1, boolean paramBoolean2);
+
+	public abstract boolean unload(boolean paramBoolean);
+
+	public abstract boolean unload();
 }

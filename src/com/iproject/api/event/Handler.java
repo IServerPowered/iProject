@@ -1,4 +1,7 @@
-package com.iproject.api.scheduler;
+/**
+ * 
+ */
+package com.iproject.api.event;
 
 /**
  * The MIT License (MIT)
@@ -23,10 +26,6 @@ package com.iproject.api.scheduler;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public @interface Handler {
 
-public interface Scheduler {
-	
-	public void run();
-	
-	public void cancelTask();
 }

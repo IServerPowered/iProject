@@ -1,4 +1,7 @@
-package com.iproject.api.scheduler;
+/**
+ * 
+ */
+package com.iproject.api.util;
 
 /**
  * The MIT License (MIT)
@@ -23,10 +26,13 @@ package com.iproject.api.scheduler;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public class ChunkVector extends Vector {
 
-public interface Scheduler {
-	
-	public void run();
-	
-	public void cancelTask();
+	public ChunkVector(double x, double z) {
+		super(x, Double.MAX_VALUE, z);
+	}
+
+	public ChunkVector(Vector vector) {
+		super(vector);
+	}
 }

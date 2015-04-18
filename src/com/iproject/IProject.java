@@ -1,16 +1,9 @@
 /**
  * 
  */
-package com.iproject.server.plugin;
+package com.iproject;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-import com.iproject.IProject;
 import com.iproject.api.Server;
-import com.iproject.api.plugin.PlLauncher;
-import com.iproject.api.plugin.Plugin;
-import com.iproject.api.plugin.PluginManager;
 
 /**
  * The MIT License (MIT)
@@ -35,49 +28,17 @@ import com.iproject.api.plugin.PluginManager;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class IPlugin implements Plugin {
+public class IProject {
 
-	private String name;
-	private List<String> authors;
+	private static Server server = null;
 	
-	private List<Plugin> pluginsLoaded = Lists.newArrayList();
-	
-	public IPlugin() {
-		pluginsLoaded.add(this);
+	public static void setServer(Server server) {
+		IProject.server = server;
+		
+		server.getLogger().info("Starting server " + server.getName() + " - " + server.getVersion());
 	}
 	
-	@Override
-	public String getMain() {
-		return this.getClass().getName();
-	}
-
-	@Override
-	public String getName() {
-		return name = getLauncher().name() != null ? name : " ";
-	}
-
-	@Override
-	public List<String> getAuthors() {
-		return authors = Lists.newArrayList(getLauncher().authors()) != null ? authors : null;
-	}
-
-	@Override
-	public PluginManager getPluginManager() {
-		return null;
-	}
-
-	@Override
-	public Server getServer() {
-		return IProject.getServer();
-	}
-
-	@Override
-	public PlLauncher getLauncher() {
-		for(PlLauncher pl;;) {
-			for(Plugin plugin : pluginsLoaded) {
-				pl = plugin.getClass().getAnnotation(PlLauncher.class);
-				return pl;
-			}
-		} 
+	public static Server getServer() {
+		return server;
 	}
 }
