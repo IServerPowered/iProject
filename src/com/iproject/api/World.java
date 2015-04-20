@@ -5,6 +5,7 @@ package com.iproject.api;
 
 import java.util.Collection;
 
+import com.iproject.api.block.Block;
 import com.iproject.api.entity.Entity;
 import com.iproject.api.util.Location;
 
@@ -46,4 +47,16 @@ public interface World {
 	public boolean isRaining();
 	
 	public boolean isSnowy();
+	
+	public Chunk getChunkAt(double x, double z);
+	
+	public Chunk getChunkAt(Block block);
+	
+	public Chunk getChunkAt(Location location);
+
+	public boolean createExplosion(Class<? extends Entity> explosion, Location location, int force, boolean flags);
+	
+	public void loadChunk(Chunk chunk);
+	
+	public void unloadChunk(Chunk chunk);
 }

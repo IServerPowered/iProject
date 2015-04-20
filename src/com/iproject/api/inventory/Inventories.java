@@ -1,10 +1,9 @@
-package com.iproject.api;
+/**
+ * 
+ */
+package com.iproject.api.inventory;
 
-import java.util.UUID;
-import java.util.logging.Logger;
-
-import com.iproject.api.entity.player.Player;
-import com.iproject.server.MinecraftServer;
+import com.iproject.server.inventory.IInventory;
 
 /**
  * The MIT License (MIT)
@@ -29,41 +28,16 @@ import com.iproject.server.MinecraftServer;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public class Inventories {
 
-public interface Server {
-
+	public static Inventory PLAYER = new IInventory(InventoryType.CHEST, 27);
 	
-	/**
-	 * Returns the logger of this server
-	 * @return The logger which used for print something in the console :p
-	 * */
-	public Logger getLogger();
+	public static Inventory CRAFTING = new IInventory(InventoryType.CRAFTING_TABLE, 9);
 	
-	/**
-	 * Returns the name of this current server <strong>API<strong>
-	 * @return the server name 
-	 * */
-	public String getName();
+	public static Inventory HOOPER = new IInventory(InventoryType.HOOPER, 5);
 	
-	/**
-	 * Returns the version of this current <strong>API<strong>
-	 * @return the current version
-	 * */
-	public String getVersion();
+	public static Inventory BREWING_STAND = new IInventory(InventoryType.BREWING_STAND, 2);
 	
-	/**
-	 * Returns the subClass of this interface, so the <code>'handle'</code>
-	 * @return the subClass of this interface
-	 * */
-	public MinecraftServer getSubClass();
-	
-	public Player getPlayer(String name);
-	
-	public Player getPlayerExact(String name);
-	
-	public Player getPlayer(UUID uuid);
-	
-	public World getWorld(String name);
-	
-	public World getWorld(long seed);
+	public Inventories() {
+	}
 }

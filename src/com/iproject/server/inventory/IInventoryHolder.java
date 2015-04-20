@@ -1,8 +1,14 @@
-package com.iproject.api.inventory;
+/**
+ * 
+ */
+package com.iproject.server.inventory;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
-import com.google.common.collect.Maps;
+import com.iproject.api.entity.player.Human;
+import com.iproject.api.inventory.Inventories;
+import com.iproject.api.inventory.Inventory;
+import com.iproject.api.inventory.InventoryHolder;
 
 /**
  * The MIT License (MIT)
@@ -27,45 +33,47 @@ import com.google.common.collect.Maps;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+public class IInventoryHolder implements InventoryHolder {
 
-public enum InventoryType {
+	public IInventoryHolder(Inventory basic) {
+		this.defaulte = basic;
+	}
+	
+	private Inventory defaulte = null;
+	private Inventory current = null;
 
-	CHEST(0, 54),
-	CRAFTING_TABLE(1, 9),
-	HOOPER(2, 5),
-	BREWING_STAND(3, 2);
-	
-	private byte data;
-	
-	private static HashMap<Byte, InventoryType> BY_DATA = Maps.newHashMap();	
-	
-	private int maxSize = 0;
-	
-	private InventoryType(int data, int maxSize) {
-		this.data = (byte) data;
-		this.maxSize = maxSize;
+	@Override
+	public Inventory getInventory() {
+		return defaulte;
+	}
+
+	public void setCurrentInventory(Inventory inv) {
+		inv.getViewers().add(((Human) this));
+		this.current = inv;
 	}
 	
-	private InventoryType(int data) {
-		this.data = (byte) data;
-		this.maxSize = 54;
+	public Inventory getCurrentInventory() {
+		return current;
 	}
 	
-	public static InventoryType getByData(int data) {
-		return (InventoryType) BY_DATA.get((byte) data);
-	}
-	
-	public byte getData() {
-		return data;
-	}
-	
-	public int getMaxSize() {
-		return maxSize;
-	}
-	
-	static {
-		for(InventoryType type : values()) {
-			BY_DATA.put(type.getData(), type);
+	@Override
+	public void closeInventory() {
+		boolean closed;
+
+		Inventory[] currents = Arrays.asList(getCurrentInventory()).toArray(new Inventory[Arrays.asList(getCurrentInventory()).size()]);
+
+		closed = true;
+
+		int iclosed = 0;
+
+		if (closed) {
+			for (int i = 0; i < currents.length;) {
+				for (iclosed = i; iclosed < currents.length; iclosed++) {
+					if (currents[iclosed] != null) {
+						currents[iclosed].close((Human)this);
+					}
+				}
+			}
 		}
 	}
 }

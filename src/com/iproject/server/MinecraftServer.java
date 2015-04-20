@@ -1,8 +1,11 @@
 package com.iproject.server;
 
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import com.iproject.api.Server;
+import com.iproject.api.World;
+import com.iproject.api.entity.player.Player;
 
 /**
  * The MIT License (MIT)
@@ -68,5 +71,45 @@ public class MinecraftServer implements Server {
 	@Override
 	public MinecraftServer getSubClass() {
 		return this;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getPlayer(java.lang.String)
+	 */
+	@Override
+	public Player getPlayer(String name) {
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getPlayerExact(java.lang.String)
+	 */
+	@Override
+	public Player getPlayerExact(String name) {
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getPlayer(java.util.UUID)
+	 */
+	@Override
+	public Player getPlayer(UUID uuid) {
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getWorld(java.lang.String)
+	 */
+	@Override
+	public World getWorld(String name) {
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.iproject.api.Server#getWorld(long)
+	 */
+	@Override
+	public World getWorld(long seed) {
+		return null;
 	}
 }

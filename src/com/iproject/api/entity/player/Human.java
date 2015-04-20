@@ -2,6 +2,7 @@ package com.iproject.api.entity.player;
 
 import com.iproject.api.entity.Entity;
 import com.iproject.api.entity.LivingEntity;
+import com.iproject.api.inventory.InventoryHolder;
 
 /**
  * The MIT License (MIT)
@@ -27,6 +28,6 @@ import com.iproject.api.entity.LivingEntity;
  * SOFTWARE.
  */
 
-public interface Human extends Entity, LivingEntity {
+public interface Human extends Entity, LivingEntity, InventoryHolder {
 
 }

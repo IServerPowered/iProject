@@ -2,7 +2,8 @@ package com.iproject.api.inventory;
 
 import java.util.List;
 
-import com.iproject.api.entity.player.Player;
+import com.iproject.api.entity.player.Human;
+import com.iproject.api.item.ItemStack;
 
 /**
  * The MIT License (MIT)
@@ -52,20 +53,28 @@ public interface Inventory {
 	 * Returns the current viewers of this inventory
 	 * @return the current viewers
 	 * */
-	public List<Player> getViewers();
+	public List<Human> getViewers();
 	
 	/**
 	 * Sets the viewers of this inventory
 	 * */
-	public void setViewers(List<Player> viewers);
+	public void setViewers(List<Human> viewers);
 	
 	/**
 	 * Add an item
 	 * */
-	public void addItem();
+	public void addItem(ItemStack stack);
 	
 	/**
 	 * Remove an item 
 	 * */
-	public void removeItem();
+	public void removeItem(ItemStack stack);
+	
+	/**
+	 * Get an item at the specified index
+	 * @return item at the specified index
+	 * */
+	public ItemStack get(int index);
+	
+	public void close(Human human);
 }
